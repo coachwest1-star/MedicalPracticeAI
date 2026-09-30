@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MedicalPracticeAI</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div><strong>MedicalPracticeAI</strong><span class="badge">EDUCATIONAL SIMULATION</span></div>
+  <div class="clock"><span id="clock">08:00</span><small id="elapsed">SIM +00:00</small></div>
+</header>
+
+<main class="cockpit">
+  <section class="left">
+    <article class="panel patient-panel">
+      <div class="panel-title"><span>Patient Bay</span><span id="acuity" class="status">STABLE</span></div>
+      <div class="patient-stage">
+        <div class="bed">
+          <div class="patient" aria-label="Fictional patient">
+            <div class="head hotspot" data-site="head">🙂</div>
+            <div class="torso hotspot" data-site="chest"><span>CHEST</span></div>
+            <div class="abdomen hotspot" data-site="abdomen"><span>ABDOMEN</span></div>
+            <div class="legs hotspot" data-site="legs"><span>LEGS</span></div>
+          </div>
+        </div>
+        <aside class="tool-tray">
+          <h3>Assessment Tools</h3>
+          <button data-tool="observe">👁 Observe</button>
+          <button data-tool="stethoscope">🩺 Stethoscope</button>
+          <button data-tool="pulseox">◉ Pulse Ox</button>
+          <button data-tool="bp">BP Cuff</button>
+          <button data-tool="temperature">🌡 Temperature</button>
+          <button data-tool="penlight">🔦 Penlight</button>
+          <p id="toolHint">Select a tool, then select the patient area when needed.</p>
+        </aside>
+      </div>
+      <div id="finding" class="finding">Your patient is waiting. Begin with observation or conversation.</div>
+    </article>
+
+    <article class="panel conversation">
+      <div class="panel-title">Patient Conversation</div>
+      <div id="chat" class="chat" aria-live="polite"></div>
+      <div class="quick-questions" id="quickQuestions"></div>
+      <form id="chatForm">
+        <input id="question" autocomplete="off" placeholder="Ask the patient a question…">
+        <button type="button" id="mic" title="Speech to text">🎙</button>
+        <button>Ask</button>
+      </form>
+    </article>
+
+    <article class="panel ai-panel">
+      <div class="panel-title"><span>MedCheckAI</span><span class="source">Reference assistant</span></div>
+      <p class="notice">MedCheckAI can explain medical concepts using information you have discovered. It cannot see the hidden diagnosis.</p>
+      <div id="aiChat" class="ai-chat"></div>
+      <form id="aiForm">
+        <input id="aiQuestion" placeholder="Ask about a symptom, test, or medical concept…">
+        <button>Check</button>
+      </form>
+      <a href="https://medlineplus.gov/" target="_blank" rel="noopener">Open MedlinePlus ↗</a>
+    </article>
+  </section>
+
+  <section class="right">
+    <article class="panel chart">
+      <div class="panel-title">Patient Chart</div>
+      <div id="chart"></div>
+      <textarea id="notes" placeholder="Clinical notes…"></textarea>
+    </article>
+
+    <article class="panel vitals">
+      <div class="panel-title">Live Vitals</div>
+      <div class="vital-grid">
+        <div><span>HR</span><strong id="hr">--</strong><small>bpm</small></div>
+        <div><span>BP</span><strong id="bpv">--/--</strong><small>mmHg</small></div>
+        <div><span>SpO₂</span><strong id="spo2">--</strong><small>%</small></div>
+        <div><span>RR</span><strong id="rr">--</strong><small>/min</small></div>
+        <div><span>TEMP</span><strong id="temp">--</strong><small>°F</small></div>
+        <div><span>PAIN</span><strong id="pain">--</strong><small>/10</small></div>
+      </div>
+      <div class="wave"><svg viewBox="0 0 600 60" preserveAspectRatio="none"><polyline points="0,35 55,35 65,15 75,50 88,35 150,35 160,15 170,50 183,35 245,35 255,15 265,50 278,35 340,35 350,15 360,50 373,35 435,35 445,15 455,50 468,35 530,35 540,15 550,50 563,35 600,35"/></svg></div>
+    </article>
+
+    <article class="panel orders">
+      <div class="panel-title">Diagnostics & Orders</div>
+      <div class="order-buttons" id="orders"></div>
+      <div id="results" class="results"><p>No results available.</p></div>
+    </article>
+
+    <article class="panel interventions">
+      <div class="panel-title">Interventions & Escalation</div>
+      <div id="interventions" class="order-buttons"></div>
+    </article>
+
+    <article class="panel decision">
+      <div class="panel-title">Clinical Decision</div>
+      <select id="diagnosis"><option value="">Working diagnosis…</option></select>
+      <textarea id="evidence" placeholder="What evidence supports your decision?"></textarea>
+      <select id="disposition">
+        <option value="">Choose next step / disposition…</option>
+        <option>Continue assessment</option><option>Treat and reassess</option>
+        <option>Escalate to supervising clinician</option><option>Activate emergency response</option>
+        <option>Transfer to higher level of care</option><option>Discharge with instructions</option>
+      </select>
+      <button id="submitDecision" class="primary">Commit Decision</button>
+    </article>
+  </section>
+</main>
+
+<dialog id="debrief">
+  <h2>Case Debrief</h2><div id="debriefBody"></div>
+  <button onclick="location.reload()">Replay Case</button>
+  <button onclick="document.getElementById('debrief').close()">Review Simulation</button>
+</dialog>
+
+<footer>Fictional educational simulation • Not for diagnosis or patient care</footer>
+<script src="js/scenario.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

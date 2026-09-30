@@ -24,3 +24,6 @@
 
 /* v2.3 living patient state */
 .patient.distress-moderate{animation:breatheFast 1.45s ease-in-out infinite}.patient.distress-severe{animation:breatheSevere .85s ease-in-out infinite}.patient.distress-severe .head{filter:saturate(.72)}.patient.distress-severe .mouth{border:2px solid #704f46;border-top:0;background:#7b4a45aa}.patient.improving{animation:breathe 2.5s ease-in-out infinite}@keyframes breatheFast{0%,100%{transform:translateX(-50%) scaleY(1)}50%{transform:translateX(-50%) scaleY(1.035)}}@keyframes breatheSevere{0%,100%{transform:translateX(-50%) scaleY(1)}50%{transform:translateX(-50%) scaleY(1.055)}}.monitor-bottom b,.wave-label strong{font-variant-numeric:tabular-nums;text-shadow:0 0 10px currentColor}.monitor-bottom b{display:block}.monitor-grid{position:relative}
+
+/* v2.4 deterioration + hidden scoring */
+.phase-badge{margin-left:10px;padding:4px 8px;border:1px solid #725c21;border-radius:99px;color:var(--amber);font-weight:800}.phase-badge.warning{border-color:#a8781e;background:#3d2f0d}.phase-badge.critical{border-color:#a43b49;background:#48141b;color:#ff8792;animation:flash .7s infinite}.wave-label strong.abnormal,.monitor-bottom b.abnormal{animation:numflash .75s infinite}@keyframes numflash{50%{opacity:.45}}.patient.distress-severe .torso{box-shadow:0 0 22px #ff4d5f33}.score-hidden{display:none}

@@ -27,3 +27,15 @@
 
 /* v2.4 deterioration + hidden scoring */
 .phase-badge{margin-left:10px;padding:4px 8px;border:1px solid #725c21;border-radius:99px;color:var(--amber);font-weight:800}.phase-badge.warning{border-color:#a8781e;background:#3d2f0d}.phase-badge.critical{border-color:#a43b49;background:#48141b;color:#ff8792;animation:flash .7s infinite}.wave-label strong.abnormal,.monitor-bottom b.abnormal{animation:numflash .75s infinite}@keyframes numflash{50%{opacity:.45}}.patient.distress-severe .torso{box-shadow:0 0 22px #ff4d5f33}.score-hidden{display:none}
+
+/* v2.5.1 conversation hotfix: keep chat patient bubbles separate from bedside patient avatar */
+.chat .bubble.patient,.ai-chat .bubble.patient{
+  position:static!important;left:auto!important;top:auto!important;right:auto!important;
+  width:auto!important;height:auto!important;display:block!important;
+  transform:none!important;filter:none!important;animation:none!important;
+  align-items:initial!important;z-index:auto!important;
+  background:#183247;margin:5px auto 5px 0;max-width:82%;
+}
+.bubble-label{display:block;margin-bottom:3px;font-size:10px;line-height:1;color:#7fe4ff;text-transform:uppercase;letter-spacing:.06em}
+.bubble.user .bubble-label{color:#d8f4ff}
+.bubble span{display:block}

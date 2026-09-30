@@ -29,3 +29,5 @@ The first playable case is a fictional adult with evolving respiratory symptoms.
 - `js/app.js` — simulation state engine and interactions
 
 Future versions can add a backend, authentication, instructor dashboard, saved student sessions, scenario authoring, and live MedlinePlus-backed retrieval.
+
+GitHub Pages deployment initialized.

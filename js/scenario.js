@@ -5,6 +5,7 @@ window.SCENARIO={
  questions:[
   {keys:["start","begin","long","when"],answer:"It started getting worse late last night. This morning I couldn't catch my breath walking in from the parking lot.",fact:"Symptoms worsened overnight."},
   {keys:["pain","chest"],answer:"My chest feels tight more than painful. Maybe a three out of ten.",fact:"Chest tightness, pain 3/10."},
+  {keys:["medical problems","medical history","health problems","conditions","past history","diagnosed","diagnoses"],answer:"I have asthma and seasonal allergies. I don't have diabetes, thyroid problems, or a history of a heart attack.",fact:"Past medical history: asthma and seasonal allergies."},
   {keys:["asthma","breathing","before"],answer:"I have asthma. Usually my rescue inhaler settles it down.",fact:"History of asthma."},
   {keys:["inhaler","medicine","medication"],answer:"I used my albuterol inhaler twice this morning. It helped for a little while, then the tightness came back.",fact:"Albuterol used twice with temporary relief."},
   {keys:["fever","sick","cough"],answer:"No fever that I know of. I've had a dry cough since yesterday.",fact:"Dry cough; denies known fever."},
@@ -12,7 +13,7 @@ window.SCENARIO={
   {keys:["smoke","smoking","vape"],answer:"I don't smoke or vape.",fact:"Denies smoking/vaping."},
   {keys:["trigger","exposure","environment"],answer:"We cleaned out a really dusty storage room at work yesterday. My breathing started acting up afterward.",fact:"Recent heavy dust exposure."}
  ],
- quick:["When did this start?","Do you have asthma?","What medications have you used?","Any fever or cough?"],
+ quick:["When did this start?","What medical problems do you have?","What medications have you used?","Any fever or cough?"],
  exams:{
   "observe:head":"Patient is alert and oriented, speaking in short sentences. Mildly anxious.",
   "observe:chest":"Respirations appear rapid with increased work of breathing.",

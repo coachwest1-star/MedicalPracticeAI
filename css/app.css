@@ -39,3 +39,6 @@
 .bubble-label{display:block;margin-bottom:3px;font-size:10px;line-height:1;color:#7fe4ff;text-transform:uppercase;letter-spacing:.06em}
 .bubble.user .bubble-label{color:#d8f4ff}
 .bubble span{display:block}
+
+/* v2.6 interactive clinical controls */
+.wall-unit{display:flex;gap:4px;padding:6px}.gas-port{font-size:10px;padding:5px 7px;background:#eef4f6;color:#435761;border:1px solid #9eafb6}.gas-port.oxygen{color:#146d46}.gas-port.active{background:#d7fff0;border-color:#55b98d;box-shadow:0 0 10px #55f2a688}.limb-hotspot{position:relative;cursor:pointer}.limb-hotspot:hover{outline:2px solid #36d7ff66}.leftarm .pulseox-visual{left:7px;right:auto}.rightarm .bp-cuff-visual{left:-3px}.rhythm-strip{display:flex;align-items:center;gap:9px;padding:7px 10px;border-top:1px solid #163228;background:#03100d;font-size:10px}.rhythm-strip span{color:#739387}.rhythm-strip b{color:var(--green);margin-right:auto}.rhythm-strip button{font-size:9px;background:#123629;border-color:#2d6b54}.reassessment{margin:0 9px 9px;padding:9px;border:1px solid #29485d;border-radius:5px;background:#071521;display:grid;gap:3px}.reassessment span{font-size:9px;color:var(--cyan);letter-spacing:.08em}.reassessment b{font-size:12px}.reassessment small{color:var(--muted)}.interventions{border-color:#315c77}

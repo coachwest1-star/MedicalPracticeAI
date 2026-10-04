@@ -1,4 +1,4 @@
-window.SCENARIO={
+const RESP001={
  id:"resp-001",title:"Difficulty Breathing",startTime:"08:00",
  patient:{name:"Jordan Miller",age:42,sex:"Adult",pronouns:"they/them",chief:"Shortness of breath and chest tightness",allergies:"No known drug allergies",history:"Asthma; seasonal allergies",meds:"Albuterol inhaler PRN",hiddenDiagnosis:"Asthma exacerbation"},
  initialVitals:{hr:108,sys:138,dia:84,spo2:92,rr:26,temp:98.7,pain:3},
@@ -49,3 +49,33 @@ window.SCENARIO={
   {keys:["x-ray","chest xray","pneumonia"],text:"Chest radiography can help evaluate several causes of respiratory symptoms, but a result must be interpreted with history, examination, and other findings."}
  ]
 };
+
+const CASE_LIBRARY=[
+{id:"resp-001",code:"RESP-001",name:"Jordan Miller",age:42,chief:"Shortness of breath and chest tightness",category:"Respiratory",acuity:"Moderate",difficulty:"Clinical",scenario:RESP001},
+{id:"card-001",code:"CARD-001",name:"Maria Lopez",age:58,chief:"Chest pressure with nausea",category:"Cardiac",acuity:"High",difficulty:"Clinical"},
+{id:"neuro-001",code:"NEURO-001",name:"Robert Davis",age:67,chief:"Sudden weakness and slurred speech",category:"Neurologic",acuity:"High",difficulty:"Challenge"},
+{id:"seps-001",code:"SEPS-001",name:"Emily Carter",age:54,chief:"Fever, weakness and confusion",category:"Infectious",acuity:"High",difficulty:"Clinical"},
+{id:"endo-001",code:"ENDO-001",name:"Linda Parker",age:35,chief:"Dizziness, sweating and confusion",category:"Endocrine",acuity:"Moderate",difficulty:"Guided"},
+{id:"trauma-001",code:"TRAUMA-001",name:"Marcus Green",age:29,chief:"Abdominal pain after motor vehicle crash",category:"Trauma",acuity:"High",difficulty:"Challenge"},
+{id:"ped-001",code:"PED-001",name:"Ava Thompson",age:9,chief:"Cough and increasing difficulty breathing",category:"Pediatric",acuity:"Moderate",difficulty:"Guided"},
+{id:"rhythm-001",code:"RHYTHM-001",name:"James Wilson",age:63,chief:"Palpitations and lightheadedness",category:"Cardiac Rhythm",acuity:"High",difficulty:"Challenge"}
+];
+function cloneScenario(o){return JSON.parse(JSON.stringify(o))}
+function genericScenario(meta){
+ let q=cloneScenario(RESP001);q.id=meta.id;q.title=meta.chief;q.patient.name=meta.name;q.patient.age=meta.age;q.patient.chief=meta.chief;
+ const map={
+ "card-001":{history:"Hypertension; hyperlipidemia",meds:"Lisinopril; atorvastatin",dx:"Acute coronary syndrome",v:{hr:102,sys:156,dia:92,spo2:96,rr:22,temp:98.4,pain:7}},
+ "neuro-001":{history:"Hypertension",meds:"Amlodipine",dx:"Acute ischemic stroke",v:{hr:88,sys:184,dia:104,spo2:97,rr:18,temp:98.2,pain:0}},
+ "seps-001":{history:"Type 2 diabetes",meds:"Metformin",dx:"Sepsis",v:{hr:122,sys:92,dia:58,spo2:93,rr:28,temp:102.6,pain:4}},
+ "endo-001":{history:"Type 1 diabetes",meds:"Insulin",dx:"Hypoglycemia",v:{hr:112,sys:126,dia:74,spo2:98,rr:20,temp:98.1,pain:0}},
+ "trauma-001":{history:"No major medical history",meds:"None",dx:"Hemorrhagic shock",v:{hr:128,sys:88,dia:54,spo2:95,rr:28,temp:97.4,pain:8}},
+ "ped-001":{history:"Asthma",meds:"Albuterol inhaler PRN",dx:"Asthma exacerbation",v:{hr:124,sys:108,dia:68,spo2:91,rr:32,temp:99.1,pain:1}},
+ "rhythm-001":{history:"Hypertension",meds:"Metoprolol",dx:"Supraventricular tachycardia",v:{hr:168,sys:104,dia:70,spo2:96,rr:24,temp:98.5,pain:2}}
+ }[meta.id];
+ if(map){q.patient.history=map.history;q.patient.meds=map.meds;q.patient.hiddenDiagnosis=map.dx;q.initialVitals=map.v;q.diagnoses=[map.dx,...q.diagnoses.filter(x=>x!==map.dx)].slice(0,6);q.questions[0].answer="It started today and it worried me enough to come in.";q.questions[2].answer="My medical history includes "+map.history+".";q.questions[2].fact="Past medical history: "+map.history+".";q.quick=["When did this start?","What medical problems do you have?","What medications do you take?","What makes this better or worse?"]}
+ return q
+}
+CASE_LIBRARY.forEach(c=>{if(!c.scenario)c.scenario=genericScenario(c)});
+window.CASE_LIBRARY=CASE_LIBRARY;
+const selected=localStorage.getItem("mpai_selected_case")||"resp-001";
+window.SCENARIO=(CASE_LIBRARY.find(c=>c.id===selected)||CASE_LIBRARY[0]).scenario;

@@ -31,4 +31,4 @@ S.orders.forEach(o=>{let b=document.createElement("button");b.textContent=o.labe
 $("wsDecisionContent").appendChild($("diagnosis").closest(".decision"));$("diagnosis").closest(".decision").classList.remove("workstation-only");
 $("docNotes").addEventListener("input",()=>{$("notes").value=$("docNotes").value});
 setInterval(()=>{if($("workstation").classList.contains("open"))syncWorkstation()},1000);
-log("Simulation started");renderChart();render();reassess("Baseline vital signs.");setInterval(()=>{seconds++;if(seconds%30===0)advance(1)},1000);requestAnimationFrame(monitor)})();
+document.querySelector(".patient-panel .panel-title span").textContent="Patient Bay • "+S.patient.name;document.querySelector(".workstation-shell header small").textContent=S.patient.name+" • "+S.id.toUpperCase();document.querySelector(".case-id b").textContent=S.id.toUpperCase();document.querySelector(".conversation .panel-title").textContent="Patient Conversation • "+S.patient.name;log("Simulation started");renderChart();render();reassess("Baseline vital signs.");setInterval(()=>{seconds++;if(seconds%30===0)advance(1)},1000);requestAnimationFrame(monitor)})();

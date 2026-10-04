@@ -42,3 +42,23 @@
 
 /* v2.6 interactive clinical controls */
 .wall-unit{display:flex;gap:4px;padding:6px}.gas-port{font-size:10px;padding:5px 7px;background:#eef4f6;color:#435761;border:1px solid #9eafb6}.gas-port.oxygen{color:#146d46}.gas-port.active{background:#d7fff0;border-color:#55b98d;box-shadow:0 0 10px #55f2a688}.limb-hotspot{position:relative;cursor:pointer}.limb-hotspot:hover{outline:2px solid #36d7ff66}.leftarm .pulseox-visual{left:7px;right:auto}.rightarm .bp-cuff-visual{left:-3px}.rhythm-strip{display:flex;align-items:center;gap:9px;padding:7px 10px;border-top:1px solid #163228;background:#03100d;font-size:10px}.rhythm-strip span{color:#739387}.rhythm-strip b{color:var(--green);margin-right:auto}.rhythm-strip button{font-size:9px;background:#123629;border-color:#2d6b54}.reassessment{margin:0 9px 9px;padding:9px;border:1px solid #29485d;border-radius:5px;background:#071521;display:grid;gap:3px}.reassessment span{font-size:9px;color:var(--cyan);letter-spacing:.08em}.reassessment b{font-size:12px}.reassessment small{color:var(--muted)}.interventions{border-color:#315c77}
+
+/* v2.7 bedside + clinical workstation architecture */
+.bedside-mode .workstation-only{display:none}
+.workstation-launch{margin:0;width:100%;padding:14px 18px;text-align:left;font-weight:800;letter-spacing:.05em;background:linear-gradient(90deg,#123b50,#102a3c);border-color:#36d7ff;color:#eaf9ff;box-shadow:inset 0 0 18px #36d7ff12}
+.workstation-launch small{display:block;margin-top:4px;color:#8fb4c7;font-weight:500;letter-spacing:0}
+.workstation-overlay{display:none;position:fixed;inset:58px 0 0;background:#02070cdd;backdrop-filter:blur(5px);z-index:40;padding:16px;overflow:auto}
+.workstation-overlay.open{display:block}
+.workstation-shell{max-width:1450px;min-height:calc(100vh - 90px);margin:auto;background:#08141f;border:1px solid #315c77;border-radius:10px;box-shadow:0 20px 70px #000;overflow:hidden}
+.workstation-shell>header{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;background:#0d2230;border-bottom:1px solid #315c77}
+.workstation-shell>header b{display:block;letter-spacing:.08em}.workstation-shell>header small{display:block;color:var(--muted);margin-top:3px}
+.workstation-shell nav{display:flex;gap:5px;padding:9px;background:#06111a;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:2}
+.workstation-shell nav button{background:#102536}.workstation-shell nav button.active{border-color:var(--cyan);color:var(--cyan);background:#123b50}
+.ws-page{display:none;padding:20px}.ws-page.active{display:block}.ws-page h2{margin-top:0}
+#wsChartContent{display:grid;grid-template-columns:repeat(2,minmax(240px,1fr));gap:8px}
+#wsOrderButtons{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:0}
+#wsResults{max-height:none;padding:15px 0}
+.note-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.note-form label{font-size:11px;color:#b9d1de;font-weight:700}.note-form textarea{height:120px;margin-top:6px}.note-form label:last-child{grid-column:1/-1}.note-form label:last-child textarea{height:160px}
+#wsDecisionContent .decision{display:block;background:transparent;border:0;box-shadow:none}
+@media(min-width:1100px){.bedside-mode{grid-template-columns:minmax(700px,1.55fr) minmax(500px,1fr)}.bedside-mode .patient-panel{min-height:570px}.bedside-mode .patient-stage,.bedside-mode .room{min-height:480px}.bedside-mode .conversation{min-height:260px}.bedside-mode .chat{height:120px}}
+@media(max-width:800px){.workstation-shell nav{overflow:auto}.note-form,#wsChartContent{grid-template-columns:1fr}#wsOrderButtons{grid-template-columns:1fr 1fr}}

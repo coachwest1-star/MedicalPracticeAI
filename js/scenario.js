@@ -51,18 +51,18 @@ const RESP001={
 };
 
 const CASE_LIBRARY=[
-{id:"resp-001",code:"RESP-001",name:"Jordan Miller",age:42,chief:"Shortness of breath and chest tightness",category:"Respiratory",acuity:"Moderate",difficulty:"Clinical",scenario:RESP001},
-{id:"card-001",code:"CARD-001",name:"Maria Lopez",age:58,chief:"Chest pressure with nausea",category:"Cardiac",acuity:"High",difficulty:"Clinical"},
-{id:"neuro-001",code:"NEURO-001",name:"Robert Davis",age:67,chief:"Sudden weakness and slurred speech",category:"Neurologic",acuity:"High",difficulty:"Challenge"},
-{id:"seps-001",code:"SEPS-001",name:"Emily Carter",age:54,chief:"Fever, weakness and confusion",category:"Infectious",acuity:"High",difficulty:"Clinical"},
-{id:"endo-001",code:"ENDO-001",name:"Linda Parker",age:35,chief:"Dizziness, sweating and confusion",category:"Endocrine",acuity:"Moderate",difficulty:"Guided"},
-{id:"trauma-001",code:"TRAUMA-001",name:"Marcus Green",age:29,chief:"Abdominal pain after motor vehicle crash",category:"Trauma",acuity:"High",difficulty:"Challenge"},
-{id:"ped-001",code:"PED-001",name:"Ava Thompson",age:9,chief:"Cough and increasing difficulty breathing",category:"Pediatric",acuity:"Moderate",difficulty:"Guided"},
-{id:"rhythm-001",code:"RHYTHM-001",name:"James Wilson",age:63,chief:"Palpitations and lightheadedness",category:"Cardiac Rhythm",acuity:"High",difficulty:"Challenge"}
+{id:"resp-001",code:"RESP-001",name:"Jordan Miller",age:42,chief:"Shortness of breath and chest tightness",category:"Respiratory",acuity:"Moderate",difficulty:"Clinical",appearance:{skin:"#d99872",skinShadow:"#bd7658",hair:"#3a2924",hairStyle:"short",build:"medium",presentation:"adult",gown:"#6f9fb4"},scenario:RESP001},
+{id:"card-001",code:"CARD-001",name:"Maria Lopez",age:58,chief:"Chest pressure with nausea",category:"Cardiac",acuity:"High",difficulty:"Clinical",appearance:{skin:"#b86f4e",skinShadow:"#96563d",hair:"#2a1d19",hairStyle:"long",build:"medium",presentation:"adult",gown:"#7898aa"}},
+{id:"neuro-001",code:"NEURO-001",name:"Robert Davis",age:67,chief:"Sudden weakness and slurred speech",category:"Neurologic",acuity:"High",difficulty:"Challenge",appearance:{skin:"#d2a17e",skinShadow:"#ae7d61",hair:"#9a9a94",hairStyle:"short",build:"broad",presentation:"older",gown:"#7899a8"}},
+{id:"seps-001",code:"SEPS-001",name:"Emily Carter",age:54,chief:"Fever, weakness and confusion",category:"Infectious",acuity:"High",difficulty:"Clinical",appearance:{skin:"#f0c3a1",skinShadow:"#ce9d7d",hair:"#8a573d",hairStyle:"shoulder",build:"medium",presentation:"adult",gown:"#7197a8"}},
+{id:"endo-001",code:"ENDO-001",name:"Linda Parker",age:35,chief:"Dizziness, sweating and confusion",category:"Endocrine",acuity:"Moderate",difficulty:"Guided",appearance:{skin:"#8d5c43",skinShadow:"#704533",hair:"#211a18",hairStyle:"long",build:"slim",presentation:"adult",gown:"#759cab"}},
+{id:"trauma-001",code:"TRAUMA-001",name:"Marcus Green",age:29,chief:"Abdominal pain after motor vehicle crash",category:"Trauma",acuity:"High",difficulty:"Challenge",appearance:{skin:"#65412f",skinShadow:"#4e3024",hair:"#171513",hairStyle:"short",build:"broad",presentation:"adult",gown:"#698d9f"}},
+{id:"ped-001",code:"PED-001",name:"Ava Thompson",age:9,chief:"Cough and increasing difficulty breathing",category:"Pediatric",acuity:"Moderate",difficulty:"Guided",appearance:{skin:"#e4b18b",skinShadow:"#c88e6b",hair:"#9b6b45",hairStyle:"long",build:"child",presentation:"child",gown:"#78a9ba"}},
+{id:"rhythm-001",code:"RHYTHM-001",name:"James Wilson",age:63,chief:"Palpitations and lightheadedness",category:"Cardiac Rhythm",acuity:"High",difficulty:"Challenge",appearance:{skin:"#b97958",skinShadow:"#955c44",hair:"#55504b",hairStyle:"short",build:"medium",presentation:"older",gown:"#708f9f"}}
 ];
 function cloneScenario(o){return JSON.parse(JSON.stringify(o))}
 function genericScenario(meta){
- let q=cloneScenario(RESP001);q.id=meta.id;q.title=meta.chief;q.patient.name=meta.name;q.patient.age=meta.age;q.patient.chief=meta.chief;
+ let q=cloneScenario(RESP001);q.id=meta.id;q.appearance=cloneScenario(meta.appearance||{});q.title=meta.chief;q.patient.name=meta.name;q.patient.age=meta.age;q.patient.chief=meta.chief;
  const map={
  "card-001":{history:"Hypertension; hyperlipidemia",meds:"Lisinopril; atorvastatin",dx:"Acute coronary syndrome",v:{hr:102,sys:156,dia:92,spo2:96,rr:22,temp:98.4,pain:7}},
  "neuro-001":{history:"Hypertension",meds:"Amlodipine",dx:"Acute ischemic stroke",v:{hr:88,sys:184,dia:104,spo2:97,rr:18,temp:98.2,pain:0}},
@@ -78,4 +78,4 @@ function genericScenario(meta){
 CASE_LIBRARY.forEach(c=>{if(!c.scenario)c.scenario=genericScenario(c)});
 window.CASE_LIBRARY=CASE_LIBRARY;
 const selected=localStorage.getItem("mpai_selected_case")||"resp-001";
-window.SCENARIO=(CASE_LIBRARY.find(c=>c.id===selected)||CASE_LIBRARY[0]).scenario;
+const selectedCase=CASE_LIBRARY.find(c=>c.id===selected)||CASE_LIBRARY[0];window.SCENARIO=selectedCase.scenario;window.SCENARIO.appearance=cloneScenario(selectedCase.appearance||window.SCENARIO.appearance||{});

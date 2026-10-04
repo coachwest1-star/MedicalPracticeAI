@@ -76,3 +76,17 @@
 /* v3.2 performance report */
 #debrief{width:min(980px,94vw);max-height:90vh;background:#f7fafc;color:#17232d;border:0;border-radius:10px;padding:24px}#debrief::backdrop{background:#02070bcc}#debrief h2{margin-top:0;color:#102c3d}.report-head{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #244c65;padding-bottom:12px}.report-score{text-align:right}.report-score b{display:block;font-size:28px}.report-score span{font-weight:700}.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.report-grid section{background:#edf3f6;border:1px solid #cbd9e1;border-radius:6px;padding:12px}#debrief table{width:100%;border-collapse:collapse}#debrief th,#debrief td{padding:7px;border-bottom:1px solid #ccd9df;text-align:left}#debrief .timeline{max-height:260px;overflow:auto;border:1px solid #cad7df;padding:8px;background:white}.debrief-actions{display:flex;gap:8px;position:sticky;bottom:0;background:#f7fafc;padding-top:12px}
 @media print{body>*{display:none!important}#debrief{display:block!important;position:static!important;width:100%!important;max-height:none!important;overflow:visible!important;padding:0!important}#debrief::backdrop,.debrief-actions{display:none!important}#debrief .timeline{max-height:none!important;overflow:visible!important}.report-grid{grid-template-columns:1fr 1fr} @page{size:letter;margin:.5in}}
+
+/* v3.3 dynamic patient appearance engine */
+#patient{--patient-skin:#d99872;--patient-skin-shadow:#bd7658;--patient-hair:#3a2924;--patient-gown:#6f9fb4}
+#patient .head,#patient .arm{background:linear-gradient(90deg,var(--patient-skin-shadow),var(--patient-skin) 28%,var(--patient-skin) 72%,var(--patient-skin-shadow))}
+#patient .neck{background:var(--patient-skin)}
+#patient .hair{background:var(--patient-hair)}
+#patient .torso,#patient .abdomen{background:var(--patient-gown)}
+#patient[data-hair="long"] .hair{height:52%;border-radius:48% 48% 25% 25%;transform:scale(1.16);top:-7%}
+#patient[data-hair="shoulder"] .hair{height:46%;border-radius:48% 48% 30% 30%;transform:scale(1.1);top:-5%}
+#patient[data-presentation="older"] .head{filter:saturate(.86)}
+#patient[data-build="broad"] .torso{transform:scaleX(1.12);transform-origin:center}
+#patient[data-build="slim"] .torso{transform:scaleX(.9);transform-origin:center}
+#patient[data-build="child"]{transform:scale(.78);transform-origin:center bottom}
+#patient[data-build="child"] .head{transform:scale(1.12)}

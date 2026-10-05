@@ -90,3 +90,16 @@
 #patient[data-build="slim"] .torso{transform:scaleX(.9);transform-origin:center}
 #patient[data-build="child"]{transform:scale(.78);transform-origin:center bottom}
 #patient[data-build="child"] .head{transform:scale(1.12)}
+
+/* Room Engine v4.0 */
+.room-engine .room{background:linear-gradient(180deg,#c9cfd1 0 63%,#a8b9b4 63% 66%,#858b89 66%);perspective:900px}
+.room-engine .room:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 0 56%,#0000000b 56% 57%,transparent 57%),linear-gradient(90deg,#ffffff12 1px,transparent 1px);background-size:auto,150px 100%;pointer-events:none}
+.ceiling-light{position:absolute;top:0;left:24%;width:43%;height:18px;background:#f4f7ed;box-shadow:0 10px 38px #fff8;z-index:1}
+.room-sign{position:absolute;top:18px;left:20px;padding:7px 10px;background:#34434a;color:white;border-radius:3px;font-weight:800;font-size:11px;letter-spacing:.08em;z-index:4}.room-sign small{display:block;font-size:7px;color:#c9d8dd;margin-top:2px}
+.room-object{position:absolute;z-index:6;border:1px solid #667b83;background:#d7ddde;color:#26363d;box-shadow:0 7px 16px #0004;border-radius:5px;transition:.18s transform,.18s box-shadow}.room-object:hover{transform:translateY(-3px);box-shadow:0 10px 20px #0006,0 0 0 2px var(--cyan)}
+.room-object b{display:block;font-size:7px;letter-spacing:.08em}.wall-monitor{right:21%;top:48px;width:115px;height:75px;background:#17272b;color:#55f2a6;border:7px solid #68777c}.wall-monitor .mini-wave{font-size:23px;display:block}.ehr-cart{right:3%;bottom:48px;width:92px;height:112px;background:linear-gradient(#243a42 0 38%,#a4afb1 38%);color:#eef8fa}.ehr-cart span{display:block;background:#06131d;color:#36d7ff;margin:3px;height:31px;padding:6px;font-size:18px}.med-cart{left:2%;bottom:40px;width:75px;height:115px;background:linear-gradient(#c9d0d1 0 22%,#a92f35 22%);color:white}.med-cart span{font-size:24px}.exam-rack{left:3%;top:92px;width:68px;height:92px;background:#d8dddc}.exam-rack span{font-size:25px}
+.room-engine .wall-unit{right:43%;top:42px}.room-engine .iv-pole{right:29%}
+.room-engine .bed{left:15%;right:17%;bottom:18px;transform:rotateX(2deg)}
+.room-engine .bedrail{left:18%;right:20%}
+.room-engine .tool-tray{position:absolute;right:8px;top:8px;bottom:8px;width:185px;border:1px solid var(--line);border-radius:7px;box-shadow:0 10px 35px #0008;transform:translateX(210px);opacity:0;pointer-events:none;transition:.2s;z-index:20}.room-engine .tool-tray.open{transform:none;opacity:1;pointer-events:auto}.tray-close{float:right;padding:2px 7px!important;width:auto!important}
+@media(max-width:900px){.room-object{display:none}.room-engine .bed{left:7%;right:7%}}
